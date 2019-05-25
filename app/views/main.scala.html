@@ -1,0 +1,56 @@
+@*
+ * This template is called from the `index` template. This template
+ * handles the rendering of the page header and body tags. It takes
+ * two arguments, a `String` for the title of the page and an `Html`
+ * object to insert into the body of the page.
+ *@
+@(title: String)(content: Html)
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <base href="/">
+        @* Here's where we render the page title `String`. *@
+        <title>@title</title>
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
+
+        <link rel="stylesheet" href="/client/dist/ng1/libs/bootstrap/dist/css/bootstrap.min.css" />
+
+        <script src="/client/dist/lib.min.js" type="text/javascript"></script>
+        <script src="/client/dist/root.min.js" type="text/javascript"></script>
+        <script src="/client/dist/auth.min.js" type="text/javascript"></script>
+        <script src="/client/dist/recipes.min.js" type="text/javascript"></script>
+        <script src="/client/dist/templates.min.js" type="text/javascript"></script>
+
+        <script>
+                // Initialize the Firebase SDK
+                // Your web app's Firebase configuration
+                var firebaseConfig = {
+                    apiKey: "AIzaSyA1GSR-_QZZsSU740yW7rsCgZEUX4LIIn0",
+                    authDomain: "recipe-book-cb3c6.firebaseapp.com",
+                    databaseURL: "https://recipe-book-cb3c6.firebaseio.com",
+                    projectId: "recipe-book-cb3c6",
+                    storageBucket: "recipe-book-cb3c6.appspot.com",
+                    messagingSenderId: "767498069054",
+                    appId: "1:767498069054:web:3491ca4e4f50b4fb"
+                };
+                // Initialize Firebase
+                firebase.initializeApp(firebaseConfig);
+        </script>
+    </head>
+    <body>
+        @* And here's where we render the `Html` object containing
+         * the page content. *@
+        @content
+
+        <header></header>
+        <div ui-view></div>
+
+        <script type="text/javascript" src="/client/dist/es2015-polyfills.js"></script>
+        <script type="text/javascript" src="/client/dist/runtime.js"></script>
+        <script type="text/javascript" src="/client/dist/polyfills.js"></script>
+        <script type="text/javascript" src="/client/dist/styles.js"></script>
+        <script type="text/javascript" src="/client/dist/vendor.js"></script>
+        <script type="text/javascript" src="/client/dist/main.js"></script>
+    </body>
+</html>

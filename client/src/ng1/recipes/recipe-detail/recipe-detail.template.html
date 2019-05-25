@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-xs-12">
+        <img ng-src="{{$ctrl.recipe.imagePath}}" alt="{{$ctrl.recipe.name}}" class="img-responsive" style="max-height: 300px">
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <h2>{{$ctrl.recipe.name}}</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="btn-group" ng-class="{'open': $ctrl.isCollapsed}">
+            <button type="button" class="btn btn-primary dropdown-toggle"
+                    ng-click="$ctrl.isCollapsed = !$ctrl.isCollapsed">Manage Recipe <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                <li><a ng-click="$ctrl.addToShoppingList()" style="cusor: pointer;">To Shopping List</a></li>
+                <li><a ui-sref="edit({id: $ctrl.index})">Edit Recipe</a></li>
+                <li><a ng-click="$ctrl.deleteRecipe()">Delete Recipe</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        {{$ctrl.recipe.description}}
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="ingredient in $ctrl.recipe.ingredients">
+                {{ingredient.name}} - {{ingredient.amount}}
+            </li>
+        </ul>
+    </div>
+</div>
