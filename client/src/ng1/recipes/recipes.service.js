@@ -8,11 +8,13 @@ export default class RecipesService {
                         'A super tasty Schnitzel - just awesome',
                     'http://images.indianexpress.com/2015/05/macaroni-main.jpg',
                     [{'name': 'eggs', 'amount': 2}]),
-            new Recipe('Tasy Schnitzel',
+            new Recipe('Pasta',
                 'A super tasty Schnitzel - just awesome',
                 'http://images.indianexpress.com/2015/05/macaroni-main.jpg',
                 [{'name': 'Cheese', 'amount': 2}])
-        ]
+        ];
+
+        this.favRecipes = [];
     }
 
     getRecipes(){
@@ -32,5 +34,13 @@ export default class RecipesService {
 
     deleteRecipe(id){
         this.recipes.splice(id, 1);
+    }
+
+    addToFavs(recipe) {
+        this.favRecipes.push(recipe);
+    }
+
+    getFavRecipes() {
+        return this.favRecipes;
     }
 }

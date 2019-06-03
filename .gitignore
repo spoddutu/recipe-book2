@@ -11,6 +11,8 @@ dist
 .history
 activator-sbt-*-shim.sbt
 *.sublime-project
+client/package-lock.json
+.gradle
 client/libs/**
 client/test/coverage
 client/test/results

@@ -23,6 +23,10 @@ export default class RecipeDetailController {
     addToShoppingList() {
         this.shoppingListService.addIngredients(this.recipe.ingredients);
     }
+
+    addToFavs() {
+        this.recipeService.addToFavs(this.recipe);
+    }
 }
 
 RecipeDetailController.$inject = ['$state', '$stateParams', 'RecipeService', 'shoppingListService']

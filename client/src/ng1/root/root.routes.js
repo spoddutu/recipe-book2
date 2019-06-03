@@ -18,4 +18,9 @@ export default function routes($stateProvider, $urlRouterProvider) {
             url: '/cart',
             component: 'shoppingList'
         })
+
+        .state('favs', {
+            url: '/favs',
+            component: 'favRecipes'
+        })
 }

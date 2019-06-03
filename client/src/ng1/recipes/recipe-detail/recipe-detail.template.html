@@ -14,7 +14,8 @@
             <button type="button" class="btn btn-primary dropdown-toggle"
                     ng-click="$ctrl.isCollapsed = !$ctrl.isCollapsed">Manage Recipe <span class="caret"></span></button>
             <ul class="dropdown-menu">
-                <li><a ng-click="$ctrl.addToShoppingList()" style="cusor: pointer;">To Shopping List</a></li>
+                <li><a ng-click="$ctrl.addToShoppingList()" style="cursor: pointer;">To Shopping List</a></li>
+                <li><a ng-click="$ctrl.addToFavs()" style="cursor: pointer;">Add to Favourites</a></li>
                 <li><a ui-sref="edit({id: $ctrl.index})">Edit Recipe</a></li>
                 <li><a ng-click="$ctrl.deleteRecipe()">Delete Recipe</a></li>
             </ul>

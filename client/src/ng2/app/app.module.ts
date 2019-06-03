@@ -4,6 +4,8 @@ import { UpgradeModule } from '@angular/upgrade/static';
 
 import { AppRoutingModule } from './app-routing.module';
 import {ShoppingListModule} from "./shopping-list/shopping-list.module";
+import {FavouriteRecipesModule} from "./favourite-recipes/favourite-recipes.module";
+import {RecipesModule} from "./recipes/recipes.module";
 
 @NgModule({
   declarations: [
@@ -12,7 +14,9 @@ import {ShoppingListModule} from "./shopping-list/shopping-list.module";
     BrowserModule,
     AppRoutingModule,
     UpgradeModule,
-    ShoppingListModule
+    RecipesModule,
+    ShoppingListModule,
+    FavouriteRecipesModule
   ],
   providers: []
 })
