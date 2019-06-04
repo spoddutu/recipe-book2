@@ -1,11 +1,14 @@
 export default class RecipeDetailController {
-    constructor($state, $stateParams, RecipeService, shoppingListService){
+    constructor($state, $stateParams, RecipeService, ngrxStoreService, AddIngredients){
         this.state = $state;
         this.stateParams = $stateParams;
         this.recipeService = RecipeService;
 
-        //Angular Service
-        this.shoppingListService = shoppingListService;
+        this.store = ngrxStoreService;
+        // TODO: Try to import AddIngredients rather than using dependency injection.
+        this.dispatchAddIngredients = (ingredients) => {
+          this.store.dispatch(new AddIngredients(ingredients));
+        };
 
         this.isCollapsed = false;
     }
@@ -21,7 +24,7 @@ export default class RecipeDetailController {
     }
 
     addToShoppingList() {
-        this.shoppingListService.addIngredients(this.recipe.ingredients);
+        this.dispatchAddIngredients(this.recipe.ingredients);
     }
 
     addToFavs() {
@@ -29,4 +32,4 @@ export default class RecipeDetailController {
     }
 }
 
-RecipeDetailController.$inject = ['$state', '$stateParams', 'RecipeService', 'shoppingListService']
+RecipeDetailController.$inject = ['$state', '$stateParams', 'RecipeService', 'ngrxStoreService', 'AddIngredients'];
