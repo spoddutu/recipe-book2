@@ -81,6 +81,14 @@ module.exports = function (grunt) {
                 }]
             }
         },
+        shell: {
+            ng: {
+                command: 'ng build'
+            },
+            bower: {
+                command: 'bower install'
+            }
+        },
         ngAnnotate: {
             options: {
                 singleQuotes: true,
@@ -209,6 +217,8 @@ module.exports = function (grunt) {
     grunt.registerTask('runLocal', function() {
         // this.requires('clean:dist');
 
+        grunt.task.run('shell:bower');
+        grunt.task.run('shell:ng');
         grunt.task.run('compile');
         grunt.task.run('connect:static');
 

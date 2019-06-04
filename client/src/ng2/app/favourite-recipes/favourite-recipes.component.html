@@ -3,7 +3,8 @@
     <ul class="list-group">
       <a class="list-group-item"
          style="cursor: pointer;"
-         uiSref="recipes"
+         uiSref="detail"
+         [uiParams]="{index: i}"
          *ngFor="let recipe of recipes; let i = index;">
         {{recipe.name}}
       </a>
