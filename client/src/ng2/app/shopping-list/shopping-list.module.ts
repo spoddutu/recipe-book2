@@ -16,6 +16,14 @@ angular.module('recipe-book')
   imports: [
     CommonModule
   ],
-  entryComponents: [ShoppingListComponent]
+  entryComponents: [ShoppingListComponent],
+  providers: [
+    {
+      provide: '$rootScope',
+      useFactory: i => i.get('$rootScope'),
+      deps: ['$injector']
+    }
+  ]
+
 })
 export class ShoppingListModule { }

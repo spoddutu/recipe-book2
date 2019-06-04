@@ -5,9 +5,16 @@ export default class HeaderController {
 
         this.isLoggedIn = authService.isLoggedIn();
 
-        this.reValidationListener = $rootScope.$on('re-validate.login', () => {
+        this.unsubscribeFns = [];
+
+        this.unsubscribeFns.push($rootScope.$on('re-validate.login', () => {
             this.isLoggedIn = authService.isLoggedIn();
-        })
+        }));
+
+        this.counter = 0;
+        this.unsubscribeFns.push($rootScope.$on('INCREMENT_COUNTER', () => {
+            ++this.counter;
+        }));
     }
 
     logout() {
@@ -21,7 +28,7 @@ export default class HeaderController {
     }
 
     $onDestroy() {
-        this.reValidationListener();
+        this.unsubscribeFns.forEach(unsubscribeFn => unsubscribeFn());
     }
 }
 

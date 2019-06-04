@@ -1,6 +1,7 @@
-import {Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Inject, OnInit, Output, ViewChild} from '@angular/core';
 import {Ingredient} from "../../shared/model/ingredient.model";
 import {ShoppingListService} from "../shopping-list.service";
+import {IRootScopeService} from "angular";
 
 @Component({
   selector: 'app-shopping-edit',
@@ -11,7 +12,10 @@ export class ShoppingEditComponent implements OnInit {
   @ViewChild('nameInput') name: ElementRef;
   @ViewChild('amountInput') amount: ElementRef;
 
-  constructor(private shoppingListService: ShoppingListService) { }
+  constructor(
+      @Inject('$rootScope') private $rootScope: IRootScopeService,
+      private shoppingListService: ShoppingListService
+  ) { }
 
   ngOnInit() {
   }
@@ -20,4 +24,9 @@ export class ShoppingEditComponent implements OnInit {
     const ingredient = new Ingredient(this.name.nativeElement.value, this.amount.nativeElement.value);
     this.shoppingListService.add(ingredient);
   }
+
+  incrementCount(){
+    this.$rootScope.$broadcast('INCREMENT_COUNTER');
+  }
+
 }
