@@ -10,7 +10,5 @@ In another terminal:
 ```
 cd client
 npm install
-bower install
-ng build
 grunt
 ```
