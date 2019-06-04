@@ -4,14 +4,14 @@ export default class RecipesService {
 
     constructor(){
         this.recipes = [
-            new Recipe('Tasy Schnitzel',
-                        'A super tasty Schnitzel - just awesome',
-                    'http://images.indianexpress.com/2015/05/macaroni-main.jpg',
-                    [{'name': 'eggs', 'amount': 2}]),
+            new Recipe('Tasty Schnitzel',
+                        'A super tasty schnitzel - just awesome',
+                    'https://cdn-image.foodandwine.com/sites/default/files/styles/medium_2x/public/200412-r-xl-lamb-schnitzel-with-aioli.jpg',
+                    [{'name': 'meat', 'amount': 2}]),
             new Recipe('Pasta',
-                'A super tasty Schnitzel - just awesome',
+                'A super tasty macaroni - just awesome',
                 'http://images.indianexpress.com/2015/05/macaroni-main.jpg',
-                [{'name': 'Cheese', 'amount': 2}])
+                [{'name': 'macaroni', 'amount': 2}])
         ];
 
         this.favRecipes = [];
