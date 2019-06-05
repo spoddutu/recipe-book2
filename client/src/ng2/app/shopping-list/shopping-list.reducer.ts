@@ -8,10 +8,7 @@ export interface AppState {
     shoppingList: State
 }
 
-export const initialState: State = [
-    new Ingredient('Apples', 5),
-    new Ingredient('Tomatoes', 10)
-];
+export const initialState: State = [];
 
 export default function reducer(
     state = initialState,

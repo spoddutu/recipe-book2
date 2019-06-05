@@ -10,8 +10,11 @@ import { RecipesModule } from './recipes/recipes.module';
 import { Store, StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
 import {UIRouterUpgradeModule} from "@uirouter/angular-hybrid";
+import { WindowDataEffects } from './window-data/window-data.effects';
 import { AppComponent } from './app.component';
+import { InitEffects } from './init.effects';
 import * as angular from 'angular';
 
 angular.module('recipe-book')
@@ -32,7 +35,8 @@ angular.module('recipe-book')
     ShoppingListModule,
     FavouriteRecipesModule,
     StoreModule.forRoot({}),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    EffectsModule.forRoot([InitEffects, WindowDataEffects])
   ],
   providers: []
 })

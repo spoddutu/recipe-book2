@@ -37,6 +37,14 @@
                 // Initialize Firebase
                 firebase.initializeApp(firebaseConfig);
         </script>
+
+        <script>
+                window.customData = {};
+                window.customData.shoppingList = [
+                    { name: 'Apples', amount: 5 },
+                    { name: 'Tomatoes', amount: 10 }
+                ];
+        </script>
     </head>
     <body>
         @* And here's where we render the `Html` object containing
