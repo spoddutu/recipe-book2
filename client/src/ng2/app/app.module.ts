@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { DoBootstrap, NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { downgradeInjectable, UpgradeModule } from '@angular/upgrade/static';
 
 // import { AppRoutingModule } from './app-routing.module';
@@ -10,6 +11,7 @@ import { Store, StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import {UIRouterUpgradeModule} from "@uirouter/angular-hybrid";
+import { AppComponent } from './app.component';
 import * as angular from 'angular';
 
 angular.module('recipe-book')
@@ -18,6 +20,7 @@ angular.module('recipe-book')
 
 @NgModule({
   declarations: [
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -25,6 +28,7 @@ angular.module('recipe-book')
     UpgradeModule,
     UIRouterUpgradeModule.forRoot(),
     RecipesModule,
+    RouterModule,
     ShoppingListModule,
     FavouriteRecipesModule,
     StoreModule.forRoot({}),
@@ -32,7 +36,7 @@ angular.module('recipe-book')
   ],
   providers: []
 })
-export class AppModule {
+export class AppModule implements DoBootstrap {
   constructor(private upgrade: UpgradeModule) {
     console.error("in Ng2 constructor");
   }
