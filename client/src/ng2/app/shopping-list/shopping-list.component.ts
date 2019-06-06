@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Store, select } from '@ngrx/store';
 import {Ingredient} from "../shared/model/ingredient.model";
-import {ShoppingListService} from "./shopping-list.service";
 import {StateService} from '@uirouter/core';
+import { State, getShoppingList } from "../app.reducer";
+import { Observable } from "rxjs";
 
 @Component({
   selector: 'app-shopping-list',
@@ -9,15 +11,14 @@ import {StateService} from '@uirouter/core';
   styleUrls: ['./shopping-list.component.css']
 })
 export class ShoppingListComponent implements OnInit {
-  ingredients: Ingredient[];
+  ingredients$: Observable<Ingredient[]>;
 
-  constructor(private shoppingListService: ShoppingListService, private $state: StateService) { }
+  constructor(private store: Store<State>, private $state: StateService) {
+      this.store = store;
+  }
 
   ngOnInit() {
-      this.ingredients = this.shoppingListService.getIngredients();
-      this.shoppingListService.ingredientAdded.subscribe(() => {
-          this.ingredients = this.shoppingListService.getIngredients();
-      })
+      this.ingredients$ = this.store.pipe(select(getShoppingList));
   }
 
   navigateTo() {
