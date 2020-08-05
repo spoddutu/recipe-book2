@@ -81,6 +81,14 @@ module.exports = function (grunt) {
                 }]
             }
         },
+        shell: {
+            ng: {
+                command: 'ng build'
+            },
+            bower: {
+                command: 'bower install'
+            }
+        },
         ngAnnotate: {
             options: {
                 singleQuotes: true,
@@ -149,7 +157,6 @@ module.exports = function (grunt) {
                     'dist/lib.min.js': [
                         'src/ng1/libs/jquery/dist/jquery.min.js',
                         'src/ng1/libs/angular/angular.min.js',
-                        'src/ng1/libs/angular-ui-router/release/angular-ui-router.min.js',
                         'src/ng1/libs/firebase/firebase.js',
                         'src/ng1/libs/angularfire/dist/angularfire.min.js'
                     ]
@@ -210,6 +217,8 @@ module.exports = function (grunt) {
     grunt.registerTask('runLocal', function() {
         // this.requires('clean:dist');
 
+        grunt.task.run('shell:bower');
+        grunt.task.run('shell:ng');
         grunt.task.run('compile');
         grunt.task.run('connect:static');
 

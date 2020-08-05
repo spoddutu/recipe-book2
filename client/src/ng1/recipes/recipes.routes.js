@@ -11,8 +11,8 @@ export default function routes($stateProvider) {
         }]
     })
 
-    .state('recipes.detail', {
-        url: '/detail/:index',
+    .state('detail', {
+        url: '/recipeDetail/:index',
         component: 'recipeDetail',
         onEnter: ['$state', 'authService', ($state, authService) => {
             if(!authService.isLoggedIn()){

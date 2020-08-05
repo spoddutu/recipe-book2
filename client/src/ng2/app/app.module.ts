@@ -2,18 +2,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { UpgradeModule } from '@angular/upgrade/static';
 
-import { AppRoutingModule } from './app-routing.module';
+// import { AppRoutingModule } from './app-routing.module';
 import {ShoppingListModule} from "./shopping-list/shopping-list.module";
 import {FavouriteRecipesModule} from "./favourite-recipes/favourite-recipes.module";
 import {RecipesModule} from "./recipes/recipes.module";
+import {UIRouterUpgradeModule} from "@uirouter/angular-hybrid";
 
 @NgModule({
   declarations: [
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    // AppRoutingModule,
     UpgradeModule,
+    UIRouterUpgradeModule.forRoot(),
     RecipesModule,
     ShoppingListModule,
     FavouriteRecipesModule

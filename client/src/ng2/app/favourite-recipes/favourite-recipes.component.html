@@ -1,12 +1,24 @@
 <div class="row">
-  <div class="col-xs-10">
+  <div class="col-xs-6">
     <ul class="list-group">
+<!--
       <a class="list-group-item"
          style="cursor: pointer;"
-         ui-sref="recipes.detail({index: 0})"
+         uiSref="detail"
+         [uiParams]="{index: i}"
+         *ngFor="let recipe of recipes; let i = index;">
+        {{recipe.name}}
+      </a>
+-->
+      <a class="list-group-item"
+         style="cursor: pointer;"
+         (click)="displayIngredients(recipe)"
          *ngFor="let recipe of recipes; let i = index;">
         {{recipe.name}}
       </a>
     </ul>
+  </div>
+  <div class="col-xs-6">
+    <ui-view></ui-view>
   </div>
 </div>

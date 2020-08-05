@@ -43,4 +43,12 @@ export default class RecipesService {
     getFavRecipes() {
         return this.favRecipes;
     }
+
+    getFavRecipeIngredients(name) {
+        return this.favRecipes.filter(recipe => {
+            if(recipe.name === name) {
+                return true;
+            }
+        })
+    }
 }
